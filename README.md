@@ -91,7 +91,7 @@
       <strong>JAMIA NAIMIA</strong><br>
       Syed Mahfooz Alam Naimi<br>
       Deewan Bazar, Moradabad UP-244001<br>
-      Phone No: +91 9412475657<br>
+      Phone No: +91 9412475675<br>
       mnaimi550@gmail.com
     </div>
   </div>
