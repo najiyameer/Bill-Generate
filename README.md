@@ -1,3 +1,6 @@
+Generate Qurbani Bill
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -58,6 +61,18 @@
   <input type="text" name="address" placeholder="Address" required>
   <input type="text" name="mobile" placeholder="Mobile" required>
 
+   <h3>Booking Details</h3>
+  <label>
+    Date of Booking:
+    <input type="date" name="bookingDate" id="bookingDate" required>
+  </label>
+  <br>
+  <label>
+    Date of Delivery:
+    <input type="date" name="deliveryDate" id="deliveryDate" required>
+  </label>
+
+
   <h3>Qurbani Share Details</h3>
   <div id="bill-entries">
     <div class="entry">
@@ -103,8 +118,8 @@
       <p><strong>Mobile:</strong> <span id="inv-mobile"></span></p>
     </div>
     <div>
-      <p><strong>Date of Booking:</strong> __/__/____</p>
-      <p><strong>Date of Delivery:</strong> __/__/____</p>
+      <p><strong>Date of Booking:</strong><span id="inv-booking-date"></span></p>
+      <p><strong>Date of Delivery:</strong><span id="inv-delivery-date"></span></p>
       <p><strong>Animal No:</strong> __/__</p>
       <canvas id="qrCode" width="120" height="120"></canvas>
     </div>
@@ -228,6 +243,15 @@
     document.getElementById('inv-mobile').innerText = formData.get('mobile');
     document.getElementById('inv-payment').innerText = formData.getAll('paymentMode').join(', ');
     document.getElementById('inv-donation').innerText = formData.get('donation') || 'No';
+
+    function formatDateToYMD(dateString) {
+    if (!dateString) return '';
+    const [year, month, day] = dateString.split('-');
+    return `${year}/${month}/${day}`;
+}
+
+document.getElementById('inv-booking-date').innerText = formatDateToYMD(formData.get('bookingDate'));
+document.getElementById('inv-delivery-date').innerText = formatDateToYMD(formData.get('deliveryDate'));
 
     const names = formData.getAll('itemName[]');
     const unitPrices = formData.getAll('unitPrice[]');
