@@ -72,6 +72,22 @@ Generate Qurbani Bill
     <input type="date" name="deliveryDate" id="deliveryDate" required>
   </label>
 
+  <label for="animal-number">Animal No:</label>
+<input type="number" id="animal-number" name="animalNumber" min="1" required />
+
+<label for="animal-part">Part:</label>
+<select id="animal-part" name="animalPart" required>
+  <option value="">Select</option>
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+  <option value="6">6</option>
+  <option value="7">7</option>
+</select>
+
+
 
   <h3>Qurbani Share Details</h3>
   <div id="bill-entries">
@@ -120,7 +136,8 @@ Generate Qurbani Bill
     <div>
       <p><strong>Date of Booking:</strong><span id="inv-booking-date"></span></p>
       <p><strong>Date of Delivery:</strong><span id="inv-delivery-date"></span></p>
-      <p><strong>Animal No:</strong> __/__</p>
+      <p><strong>Animal No:</strong> <span id="inv-animal-no">____/__</span></p>
+
       <canvas id="qrCode" width="120" height="120"></canvas>
     </div>
   </div>
@@ -168,6 +185,11 @@ Generate Qurbani Bill
 
   form.addEventListener('submit', async e => {
     e.preventDefault();
+
+    const number = form.animalNumber.value;
+    const part = form.animalPart.value;
+
+    document.getElementById('inv-animal-no').innerText = `${number}/${part}`;
 
     const invoiceNum = getInvoiceNumber();
     document.getElementById('invoiceNumber').value = invoiceNum;
