@@ -247,7 +247,7 @@ Generate Qurbani Bill
     function formatDateToYMD(dateString) {
     if (!dateString) return '';
     const [year, month, day] = dateString.split('-');
-    return `${year}/${month}/${day}`;
+    return `${day}/${month}/${year}`;
 }
 
 document.getElementById('inv-booking-date').innerText = formatDateToYMD(formData.get('bookingDate'));
